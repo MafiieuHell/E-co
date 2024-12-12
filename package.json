@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "backend/server.js",
   "scripts": {
-    "dev":"nodemon backend/server.js",
+    "dev": "nodemon backend/server.js",
     "start": "node backend/server.js"
   },
   "keywords": [],
@@ -12,15 +12,24 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@stripe/stripe-js": "^5.2.0",
+    "axios": "^1.7.9",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.5.1",
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.7",
     "express": "^4.21.1",
+    "framer-motion": "^11.13.5",
     "ioredis": "^5.4.1",
     "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.468.0",
     "mongoose": "^8.8.3",
-    "stripe": "^17.4.0"
+    "react-confetti": "^6.1.0",
+    "react-hot-toast": "^2.4.1",
+    "react-router-dom": "^7.0.2",
+    "recharts": "^2.14.1",
+    "stripe": "^17.4.0",
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
