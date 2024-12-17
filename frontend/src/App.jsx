@@ -6,6 +6,7 @@ import HomePage from "./pages/Homepage";
 import AdminPage from "./pages/AdminPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
+import CategoryPage from "./pages/CategoryPage";
 
 import NavBar from "./components/NavBar";
 import LoadingSpinner from "./components/LoadingSpinner";
@@ -47,6 +48,7 @@ function App() {
               user?.role === "admin" ? <AdminPage /> : <Navigate to="/" />
             }
           />
+          <Route path="/category/:category" element={<CategoryPage />} />
         </Routes>
       </div>
       <Toaster />
