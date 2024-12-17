@@ -1,7 +1,9 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import HomePage from "./pages/Homepage";
+import { useEffect } from "react";
 
+import HomePage from "./pages/Homepage";
+import AdminPage from "./pages/AdminPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 
@@ -9,7 +11,6 @@ import NavBar from "./components/NavBar";
 import LoadingSpinner from "./components/LoadingSpinner";
 
 import { useUserStore } from "./stores/useUserStore";
-import { useEffect } from "react";
 function App() {
   const { user, checkAuth, checkingAuth } = useUserStore();
   useEffect(() => {
@@ -39,6 +40,12 @@ function App() {
           <Route
             path="/login"
             element={!user ? <LoginPage /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/secret-dashboard"
+            element={
+              user?.role === "admin" ? <AdminPage /> : <Navigate to="/" />
+            }
           />
         </Routes>
       </div>

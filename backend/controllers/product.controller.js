@@ -1,6 +1,7 @@
 import Product from "../models/product.model.js";
 import { redis } from "../lib/redis.js";
 import cloudinary from "../lib/cloudinary.js";
+import { image } from "framer-motion/client";
 export const getAllProducts = async (req, res) => {
   try {
     const products = await Product.find({}); //find all products
@@ -37,11 +38,15 @@ export const getFeaturedProducts = async (req, res) => {
 export const createProduct = async (req, res) => {
   try {
     const { name, description, price, image, category } = req.body;
+
     let cloudinaryResponse = null;
 
     if (image) {
-      await cloudinary.uploader.upload(image, { folder: "products" }); //upload image to cloudinary
+      cloudinaryResponse = await cloudinary.uploader.upload(image, {
+        folder: "products",
+      });
     }
+
     const product = await Product.create({
       name,
       description,
@@ -50,12 +55,12 @@ export const createProduct = async (req, res) => {
         ? cloudinaryResponse.secure_url
         : "",
       category,
-    }); //create product
+    });
 
     res.status(201).json(product);
   } catch (error) {
-    console.log("Error in createProductController", error.message);
-    res.status(500).json({ message: "server error", error: error.message });
+    console.log("Error in createProduct controller", error.message);
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 

@@ -4,24 +4,24 @@ const productSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Please add a name"],
+      required: true,
     },
     description: {
       type: String,
-      required: [true, "Please add a description"],
+      required: true,
     },
     price: {
       type: Number,
-      min: [0, "Price must be at least 0"],
-      required: [true, "Please add a price"],
+      min: 0,
+      required: true,
     },
     image: {
       type: String,
-      required: [true, "Please add an image"],
+      required: [true, "Image is required"],
     },
     category: {
       type: String,
-      required: [true, "Please add a category"],
+      required: true,
     },
     isFeatured: {
       type: Boolean,
