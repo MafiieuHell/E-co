@@ -57,7 +57,6 @@ export const useProductStore = create((set) => ({
     }
   },
   toggleFeaturedProduct: async (productId) => {
-    set({ loading: true });
     try {
       const response = await axios.patch(`/products/${productId}`);
 
