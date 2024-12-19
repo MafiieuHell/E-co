@@ -5,8 +5,12 @@ import { MoveRight } from "lucide-react";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "../lib/axios";
 
+const stripePromise = loadStripe(
+  "pk_test_51QUPxaLdtstgtGTccC68qV0D9CSEFh6nhJCTFD2AMce30h9T8MY1LQ3SKYt1aSua4qjI7WFXbK41BxJcL0Aywh9Q00W55N22Sm"
+);
+
 const OrderSummary = () => {
-  const { total, subtotal, coupon, isCouponApplied, cart } = useCartStore();
+  const { total, subtotal, isCouponApplied, coupon, cart } = useCartStore();
 
   const savings = subtotal - total;
   const formattedSubtotal = subtotal.toFixed(2);
@@ -58,7 +62,6 @@ const OrderSummary = () => {
               </dd>
             </dl>
           )}
-
           {coupon && isCouponApplied && (
             <dl className="flex items-center justify-between gap-4">
               <dt className="text-base font-normal text-gray-300">
@@ -76,7 +79,6 @@ const OrderSummary = () => {
             </dd>
           </dl>
         </div>
-
         <motion.button
           className="flex w-full items-center justify-center rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300"
           whileHover={{ scale: 1.05 }}
@@ -85,7 +87,6 @@ const OrderSummary = () => {
         >
           Proceed to Checkout
         </motion.button>
-
         <div className="flex items-center justify-center gap-2">
           <span className="text-sm font-normal text-gray-400">or</span>
           <Link
@@ -100,4 +101,5 @@ const OrderSummary = () => {
     </motion.div>
   );
 };
+
 export default OrderSummary;

@@ -1,7 +1,6 @@
 import Product from "../models/product.model.js";
 import { redis } from "../lib/redis.js";
 import cloudinary from "../lib/cloudinary.js";
-import { image } from "framer-motion/client";
 export const getAllProducts = async (req, res) => {
   try {
     const products = await Product.find({}); //find all products
@@ -95,7 +94,7 @@ export const getRecommendedProducts = async (req, res) => {
     const products = await Product.aggregate([
       {
         $sample: {
-          size: 3,
+          size: 4,
         },
       },
       {

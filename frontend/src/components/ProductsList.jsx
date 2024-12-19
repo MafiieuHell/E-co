@@ -5,6 +5,8 @@ import { useProductStore } from "../stores/useProductStore";
 const ProductsList = () => {
   const { deleteProduct, toggleFeaturedProduct, products } = useProductStore();
 
+  console.log("products", products);
+
   return (
     <motion.div
       className="bg-gray-800 shadow-lg rounded-lg overflow-hidden max-w-4xl mx-auto"
@@ -79,12 +81,10 @@ const ProductsList = () => {
               <td className="px-6 py-4 whitespace-nowrap">
                 <button
                   onClick={() => toggleFeaturedProduct(product._id)}
-                  {...console.log("test 1", product.isFeatured)}
                   className={`p-1 rounded-full ${
-                    (product.isFeatured,
-                    console.log("test 2", product.isFeatured)
+                    product.isFeatured
                       ? "bg-yellow-400 text-gray-900"
-                      : "bg-gray-600 text-gray-300")
+                      : "bg-gray-600 text-gray-300"
                   } hover:bg-yellow-500 transition-colors duration-200`}
                 >
                   <Star className="h-5 w-5" />

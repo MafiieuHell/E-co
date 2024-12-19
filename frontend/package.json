@@ -9,10 +9,18 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "lucide-react": "^0.468.0",
+  "dependencies": {    
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "lucide-react": "^0.468.0",
+    "react-confetti": "^6.1.0",
+    "react-hot-toast": "^2.4.1",
+    "react-router-dom": "^7.0.2",
+    "recharts": "^2.14.1",
+    "framer-motion": "^11.13.5",
+    "zustand": "^5.0.2",
+    "@stripe/stripe-js": "^5.2.0",
+    "axios": "^1.7.9"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
