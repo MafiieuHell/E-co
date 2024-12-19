@@ -11,30 +11,34 @@ export const getCartProducts = async (req, res) => {
       );
       return { ...product.toJSON(), quantity: item.quantity };
     });
+
     res.json(cartItems);
   } catch (error) {
     console.log("Error in getCartProducts controller", error.message);
-    res.status(500).json({ message: "server error", error: error.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
 export const addToCart = async (req, res) => {
   try {
     const { productId } = req.body;
     const user = req.user;
-    const existingItem = user.cartItems.find((item) => item.id === productId);
 
+    const existingItem = user.cartItems.find((item) => item.id === productId);
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
       user.cartItems.push(productId);
     }
+
     await user.save();
     res.json(user.cartItems);
   } catch (error) {
     console.log("Error in addToCart controller", error.message);
-    res.status(500).json({ message: "server error", error: error.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
 export const removeAllFromCart = async (req, res) => {
   try {
     const { productId } = req.body;
@@ -47,8 +51,7 @@ export const removeAllFromCart = async (req, res) => {
     await user.save();
     res.json(user.cartItems);
   } catch (error) {
-    console.log("Error in removeFromCart controller", error.message);
-    res.status(500).json({ message: "server error", error: error.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
@@ -65,14 +68,15 @@ export const updateQuantity = async (req, res) => {
         await user.save();
         return res.json(user.cartItems);
       }
+
       existingItem.quantity = quantity;
       await user.save();
-      return res.json(user.cartItems);
+      res.json(user.cartItems);
     } else {
-      res.status(404).json({ message: "Item not found in cart" });
+      res.status(404).json({ message: "Product not found" });
     }
   } catch (error) {
     console.log("Error in updateQuantity controller", error.message);
-    res.status(500).json({ message: "server error", error: error.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };

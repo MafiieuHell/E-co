@@ -1,19 +1,11 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useCartStore } from "../stores/useCartStore";
 
-const GiftCuponCard = () => {
+const GiftCouponCard = () => {
   const [userInputCode, setUserInputCode] = useState("");
-  const { coupon, isCouponApplied, applyCoupon, removeCoupon, getMyCoupon } =
+  const { coupon, isCouponApplied, applyCoupon, getMyCoupon, removeCoupon } =
     useCartStore();
-
-  useEffect(() => {
-    getMyCoupon();
-  }, [getMyCoupon]);
-
-  useEffect(() => {
-    if (coupon) setUserInputCode(coupon.code);
-  }, [coupon]);
 
   const handleApplyCoupon = () => {
     if (!userInputCode) return;
@@ -38,20 +30,19 @@ const GiftCuponCard = () => {
             htmlFor="voucher"
             className="mb-2 block text-sm font-medium text-gray-300"
           >
-            Do you have a voucher or gift card?
+            Avez-vous un code de réduction ?
           </label>
           <input
             type="text"
             id="voucher"
-            className="block w-full rounded-lg border border-gray-600 bg-gray-700 
-            p-2.5 text-sm text-white placeholder-gray-400 focus:border-emerald-500 
-            focus:ring-emerald-500"
-            placeholder="Enter code here"
-            value={userInputCode || ""}
+            className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2.5 text-sm text-white placeholder-gray-400 focus:border-emerald-500 focus:ring-emerald-500"
+            placeholder="Entrez le code de réduction"
+            value={userInputCode}
             onChange={(e) => setUserInputCode(e.target.value)}
             required
           />
         </div>
+
         <motion.button
           type="button"
           className="flex w-full items-center justify-center rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300"
@@ -59,7 +50,7 @@ const GiftCuponCard = () => {
           whileTap={{ scale: 0.95 }}
           onClick={handleApplyCoupon}
         >
-          Apply Code
+          Appliquer le code
         </motion.button>
       </div>
       {isCouponApplied && coupon && (
@@ -67,7 +58,7 @@ const GiftCuponCard = () => {
           <h3 className="text-lg font-medium text-gray-300">Applied Coupon</h3>
 
           <p className="mt-2 text-sm text-gray-400">
-            {coupon.code} - {coupon.discountPercentage}% off
+            {coupon.code} - {coupon.discountPercentage}%
           </p>
 
           <motion.button
@@ -79,22 +70,22 @@ const GiftCuponCard = () => {
             whileTap={{ scale: 0.95 }}
             onClick={handleRemoveCoupon}
           >
-            Remove Coupon
+            Supprimer le code
           </motion.button>
         </div>
       )}
+
       {coupon && coupon.applied && (
         <div className="mt-4">
           <h3 className="text-lg font-medium text-gray-300">
-            Your Available Coupon:
+            Votre code de réduction est appliqué
           </h3>
           <p className="mt-2 text-sm text-gray-400">
-            {coupon.code} - {coupon.discountPercentage}% off
+            - {coupon.code} - {coupon.discountPercentage}%
           </p>
         </div>
       )}
     </motion.div>
   );
 };
-
-export default GiftCuponCard;
+export default GiftCouponCard;

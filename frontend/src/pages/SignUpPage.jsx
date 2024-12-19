@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { UserPlus, Mail, Lock, User, ArrowRight, Loader } from "lucide-react";
 import { motion } from "framer-motion";
 import { useUserStore } from "../stores/useUserStore";
+
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,10 +13,12 @@ const SignUpPage = () => {
   });
 
   const { signup, loading } = useUserStore();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     signup(formData);
   };
+
   return (
     <div className="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <motion.div
@@ -24,8 +27,8 @@ const SignUpPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h2 className="mt-6 text-center text-3xl font-extrabold tesxt-emerald-400">
-          Créé votre compte
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-emerald-400">
+          Create your account
         </h2>
       </motion.div>
 
@@ -42,7 +45,7 @@ const SignUpPage = () => {
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-300"
               >
-                Nom et Prénom
+                Full name
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -68,7 +71,7 @@ const SignUpPage = () => {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-300"
               >
-                Adresse mail
+                Email address
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -86,7 +89,7 @@ const SignUpPage = () => {
 									rounded-md shadow-sm
 									 placeholder-gray-400 focus:outline-none focus:ring-emerald-500 
 									 focus:border-emerald-500 sm:text-sm"
-                  placeholder="nomprenom@example.fr"
+                  placeholder="you@example.com"
                 />
               </div>
             </div>
@@ -96,7 +99,7 @@ const SignUpPage = () => {
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-300"
               >
-                Mot de passe
+                Password
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -122,7 +125,7 @@ const SignUpPage = () => {
                 htmlFor="confirmPassword"
                 className="block text-sm font-medium text-gray-300"
               >
-                Confirmer le mot de passe
+                Confirm Password
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -165,19 +168,19 @@ const SignUpPage = () => {
               ) : (
                 <>
                   <UserPlus className="mr-2 h-5 w-5" aria-hidden="true" />
-                  Inscription
+                  Sign up
                 </>
               )}
             </button>
           </form>
+
           <p className="mt-8 text-center text-sm text-gray-400">
-            Vous avez déja un compte ?{" "}
+            Already have an account?{" "}
             <Link
               to="/login"
               className="font-medium text-emerald-400 hover:text-emerald-300"
             >
-              Connecter-vous ici
-              <ArrowRight className="inline h-4 w-4" />
+              Login here <ArrowRight className="inline h-4 w-4" />
             </Link>
           </p>
         </div>
@@ -185,5 +188,4 @@ const SignUpPage = () => {
     </div>
   );
 };
-
 export default SignUpPage;

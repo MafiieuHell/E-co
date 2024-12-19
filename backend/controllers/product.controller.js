@@ -1,13 +1,14 @@
-import Product from "../models/product.model.js";
 import { redis } from "../lib/redis.js";
 import cloudinary from "../lib/cloudinary.js";
+import Product from "../models/product.model.js";
+
 export const getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find({}); //find all products
+    const products = await Product.find({}); // find all products
     res.json({ products });
   } catch (error) {
-    console.log("Error in get all products controller", error.message);
-    res.status(500).json({ message: "server error", error: error.message });
+    console.log("Error in getAllProducts controller", error.message);
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
@@ -69,23 +70,28 @@ export const createProduct = async (req, res) => {
 
 export const deleteProduct = async (req, res) => {
   try {
-    const product = await Product.findByIdAndDelete(req.params.id); //delete product
+    const product = await Product.findById(req.params.id);
+
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
+
     if (product.image) {
-      const publicId = product.image.split("/").pop().split(".")[0]; //get public id from image url
+      const publicId = product.image.split("/").pop().split(".")[0];
       try {
-        await cloudinary.uploader.destroy(`products/${publicId}`); //delete image from cloudinary
-        console.log("Image deleted from cloudinary");
+        await cloudinary.uploader.destroy(`products/${publicId}`);
+        console.log("deleted image from cloduinary");
       } catch (error) {
-        console.log("Error deleting image from cloudinary", error.message);
+        console.log("error deleting image from cloduinary", error);
       }
     }
-    await Product.findByIdAndDelete(req.params.id); //delete product
+
+    await Product.findByIdAndDelete(req.params.id);
+
+    res.json({ message: "Product deleted successfully" });
   } catch (error) {
-    console.log("Error in deleteProductController", error.message);
-    res.status(500).json({ message: "server error", error: error.message });
+    console.log("Error in deleteProduct controller", error.message);
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
@@ -93,9 +99,7 @@ export const getRecommendedProducts = async (req, res) => {
   try {
     const products = await Product.aggregate([
       {
-        $sample: {
-          size: 4,
-        },
+        $sample: { size: 4 },
       },
       {
         $project: {
@@ -107,10 +111,11 @@ export const getRecommendedProducts = async (req, res) => {
         },
       },
     ]);
+
     res.json(products);
   } catch (error) {
     console.log("Error in getRecommendedProducts controller", error.message);
-    res.status(500).json({ message: "server error", error: error.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
@@ -121,7 +126,7 @@ export const getProductsByCategory = async (req, res) => {
     res.json({ products });
   } catch (error) {
     console.log("Error in getProductsByCategory controller", error.message);
-    res.status(500).json({ message: "server error", error: error.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
@@ -132,21 +137,23 @@ export const toggleFeaturedProduct = async (req, res) => {
       product.isFeatured = !product.isFeatured;
       const updatedProduct = await product.save();
       await updateFeaturedProductsCache();
-      res.json({ product: updatedProduct });
+      res.json(updatedProduct);
     } else {
       res.status(404).json({ message: "Product not found" });
     }
   } catch (error) {
     console.log("Error in toggleFeaturedProduct controller", error.message);
-    res.status(500).json({ message: "server error", error: error.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
 async function updateFeaturedProductsCache() {
   try {
+    // The lean() method  is used to return plain JavaScript objects instead of full Mongoose documents. This can significantly improve performance
+
     const featuredProducts = await Product.find({ isFeatured: true }).lean();
     await redis.set("featured_products", JSON.stringify(featuredProducts));
   } catch (error) {
-    console.log("Error updating featured products cache", error.message);
+    console.log("error in update cache function");
   }
 }

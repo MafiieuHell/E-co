@@ -1,21 +1,20 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
-import { useEffect } from "react";
 
-import HomePage from "./pages/Homepage";
-import AdminPage from "./pages/AdminPage";
-import LoginPage from "./pages/LoginPage";
+import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
+import LoginPage from "./pages/LoginPage";
+import AdminPage from "./pages/AdminPage";
 import CategoryPage from "./pages/CategoryPage";
+
+import Navbar from "./components/Navbar";
+import { Toaster } from "react-hot-toast";
+import { useUserStore } from "./stores/useUserStore";
+import { useEffect } from "react";
+import LoadingSpinner from "./components/LoadingSpinner";
 import CartPage from "./pages/CartPage";
+import { useCartStore } from "./stores/useCartStore";
 import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
 import PurchaseCancelPage from "./pages/PurchaseCancelPage";
-
-import NavBar from "./components/NavBar";
-import LoadingSpinner from "./components/LoadingSpinner";
-
-import { useUserStore } from "./stores/useUserStore";
-import { useCartStore } from "./stores/useCartStore";
 
 function App() {
   const { user, checkAuth, checkingAuth } = useUserStore();
@@ -41,9 +40,8 @@ function App() {
         </div>
       </div>
 
-      {/* Content */}
       <div className="relative z-50 pt-20">
-        <NavBar />
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
@@ -57,7 +55,7 @@ function App() {
           <Route
             path="/secret-dashboard"
             element={
-              user?.role === "admin" ? <AdminPage /> : <Navigate to="/" />
+              user?.role === "admin" ? <AdminPage /> : <Navigate to="/login" />
             }
           />
           <Route path="/category/:category" element={<CategoryPage />} />

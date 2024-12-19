@@ -1,12 +1,15 @@
 import Coupon from "../models/coupon.model.js";
+
 export const getCoupon = async (req, res) => {
   try {
-    const coupon = await Coupon.find({ userId: req.user._id, isActive: true });
-
+    const coupon = await Coupon.findOne({
+      userId: req.user._id,
+      isActive: true,
+    });
     res.json(coupon || null);
   } catch (error) {
-    console.log("Error in getCoupons controller", error.message);
-    res.status(500).json({ message: "server error", error: error.message });
+    console.log("Error in getCoupon controller", error.message);
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 
@@ -36,6 +39,6 @@ export const validateCoupon = async (req, res) => {
     });
   } catch (error) {
     console.log("Error in validateCoupon controller", error.message);
-    res.status(500).json({ message: "server error", error: error.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };

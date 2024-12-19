@@ -30,7 +30,7 @@ const AnalyticsTab = () => {
         setAnalyticsData(response.data.analyticsData);
         setDailySalesData(response.data.dailySalesData);
       } catch (error) {
-        console.error("Error fetching analytics data:", error.response.data);
+        console.error("Error fetching analytics data:", error);
       } finally {
         setIsLoading(false);
       }
