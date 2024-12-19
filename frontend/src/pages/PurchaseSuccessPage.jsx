@@ -56,26 +56,27 @@ const PurchaseSuccessPage = () => {
             <CheckCircle className="text-emerald-400 w-16 h-16 mb-4" />
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-center text-emerald-400 mb-2">
-            Purchase Successful!
+            Achat effectué
           </h1>
 
           <p className="text-gray-300 text-center mb-2">
-            Thank you for your order. {"We're"} processing it now.
+            Merci pour votre commande. Nous le traitons maintenant.
           </p>
           <p className="text-emerald-400 text-center text-sm mb-6">
-            Check your email for order details and updates.
+            Vérifiez votre email pour les détails de la commande et les mises à
+            jour.
           </p>
           <div className="bg-gray-700 rounded-lg p-4 mb-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-400">Order number</span>
+              <span className="text-sm text-gray-400">Numéro de commande</span>
               <span className="text-sm font-semibold text-emerald-400">
                 #12345
               </span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-400">Estimated delivery</span>
+              <span className="text-sm text-gray-400">Délais de livraison</span>
               <span className="text-sm font-semibold text-emerald-400">
-                3-5 business days
+                3-5 jours ouvrés
               </span>
             </div>
           </div>
@@ -86,14 +87,14 @@ const PurchaseSuccessPage = () => {
              rounded-lg transition duration-300 flex items-center justify-center"
             >
               <HandHeart className="mr-2" size={18} />
-              Thanks for trusting us!
+              Merci de nous faire confiance !
             </button>
             <Link
               to={"/"}
               className="w-full bg-gray-700 hover:bg-gray-600 text-emerald-400 font-bold py-2 px-4 
             rounded-lg transition duration-300 flex items-center justify-center"
             >
-              Continue Shopping
+              Continuer mes achats
               <ArrowRight className="ml-2" size={18} />
             </Link>
           </div>

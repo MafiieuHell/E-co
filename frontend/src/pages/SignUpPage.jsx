@@ -28,7 +28,7 @@ const SignUpPage = () => {
         transition={{ duration: 0.8 }}
       >
         <h2 className="mt-6 text-center text-3xl font-extrabold text-emerald-400">
-          Create your account
+          Créer un compte
         </h2>
       </motion.div>
 
@@ -45,7 +45,7 @@ const SignUpPage = () => {
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-300"
               >
-                Full name
+                Nom Prénom
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -71,7 +71,7 @@ const SignUpPage = () => {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-300"
               >
-                Email address
+                Email
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -89,7 +89,7 @@ const SignUpPage = () => {
 									rounded-md shadow-sm
 									 placeholder-gray-400 focus:outline-none focus:ring-emerald-500 
 									 focus:border-emerald-500 sm:text-sm"
-                  placeholder="you@example.com"
+                  placeholder="nom@example.fr"
                 />
               </div>
             </div>
@@ -99,7 +99,7 @@ const SignUpPage = () => {
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-300"
               >
-                Password
+                Mot de passe
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -125,7 +125,7 @@ const SignUpPage = () => {
                 htmlFor="confirmPassword"
                 className="block text-sm font-medium text-gray-300"
               >
-                Confirm Password
+                Confirmer le mot de passe
               </label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -168,19 +168,19 @@ const SignUpPage = () => {
               ) : (
                 <>
                   <UserPlus className="mr-2 h-5 w-5" aria-hidden="true" />
-                  Sign up
+                  Creer un compte
                 </>
               )}
             </button>
           </form>
 
           <p className="mt-8 text-center text-sm text-gray-400">
-            Already have an account?{" "}
+            Vous avez déjà un compte{" "}
             <Link
               to="/login"
               className="font-medium text-emerald-400 hover:text-emerald-300"
             >
-              Login here <ArrowRight className="inline h-4 w-4" />
+              Connectez-vous ici <ArrowRight className="inline h-4 w-4" />
             </Link>
           </p>
         </div>

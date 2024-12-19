@@ -26,9 +26,7 @@ const HomePage = () => {
         <h1 className="text-center text-5xl sm:text-6xl font-bold text-emerald-400 mb-4">
           Faites plaisir à vos Félins
         </h1>
-        <p className="text-center text-xl text-gray-300 mb-12">
-          Discover the latest trends in eco-friendly fashion
-        </p>
+        <p className="text-center text-xl text-gray-300 mb-12">miaow miaow</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {categories.map((category) => (

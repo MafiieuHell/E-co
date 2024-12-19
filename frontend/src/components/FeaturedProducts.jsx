@@ -36,7 +36,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
     <div className="py-12">
       <div className="container mx-auto px-4">
         <h2 className="text-center text-5xl sm:text-6xl font-bold text-emerald-400 mb-4">
-          Featured
+          En vedette
         </h2>
         <div className="relative">
           <div className="overflow-hidden">
@@ -66,7 +66,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
                         {product.name}
                       </h3>
                       <p className="text-emerald-300 font-medium mb-4">
-                        ${product.price.toFixed(2)}
+                        {product.price.toFixed(2)} €
                       </p>
                       <button
                         onClick={() => addToCart(product)}
@@ -74,7 +74,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
 												flex items-center justify-center"
                       >
                         <ShoppingCart className="w-5 h-5 mr-2" />
-                        Add to Cart
+                        Ajouter au panier
                       </button>
                     </div>
                   </div>

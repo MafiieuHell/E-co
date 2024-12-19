@@ -34,7 +34,7 @@ const CategoryPage = () => {
         >
           {products?.length === 0 && (
             <h2 className="text-3xl font-semibold text-gray-300 text-center col-span-full">
-              No products found
+              Pas de produits pour cette categorie
             </h2>
           )}
 

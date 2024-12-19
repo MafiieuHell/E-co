@@ -16,15 +16,15 @@ const PurchaseCancelPage = () => {
             <XCircle className="text-red-500 w-16 h-16 mb-4" />
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-center text-red-500 mb-2">
-            Purchase Cancelled
+            Achat annulé
           </h1>
           <p className="text-gray-300 text-center mb-6">
-            Your order has been cancelled. No charges have been made.
+            Votre commande a été annulée. Aucune accusation n'a été facturée.
           </p>
           <div className="bg-gray-700 rounded-lg p-4 mb-6">
             <p className="text-sm text-gray-400 text-center">
-              If you encountered any issues during the checkout process, please
-              don&apos;t hesitate to contact our support team.
+              Si vous avez rencontré des problèmes lors du processus de
+              paiement, n'hésitez pas à contacter notre équipe d'assistance.
             </p>
           </div>
           <div className="space-y-4">
@@ -33,7 +33,7 @@ const PurchaseCancelPage = () => {
               className="w-full bg-gray-700 hover:bg-gray-600 text-gray-300 font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center"
             >
               <ArrowLeft className="mr-2" size={18} />
-              Return to Shop
+              Continuer mes achats
             </Link>
           </div>
         </div>

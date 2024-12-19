@@ -47,25 +47,25 @@ const AnalyticsTab = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <AnalyticsCard
-          title="Total Users"
+          title="Total Utilisateurs"
           value={analyticsData.users.toLocaleString()}
           icon={Users}
           color="from-emerald-500 to-teal-700"
         />
         <AnalyticsCard
-          title="Total Products"
+          title="Total Produits"
           value={analyticsData.products.toLocaleString()}
           icon={Package}
           color="from-emerald-500 to-green-700"
         />
         <AnalyticsCard
-          title="Total Sales"
+          title="Total Ventes"
           value={analyticsData.totalSales.toLocaleString()}
           icon={ShoppingCart}
           color="from-emerald-500 to-cyan-700"
         />
         <AnalyticsCard
-          title="Total Revenue"
+          title="Total Revenus"
           value={`$${analyticsData.totalRevenue.toLocaleString()}`}
           icon={DollarSign}
           color="from-emerald-500 to-lime-700"
@@ -91,7 +91,7 @@ const AnalyticsTab = () => {
               dataKey="sales"
               stroke="#10B981"
               activeDot={{ r: 8 }}
-              name="Sales"
+              name="Ventes"
             />
             <Line
               yAxisId="right"
@@ -99,7 +99,7 @@ const AnalyticsTab = () => {
               dataKey="revenue"
               stroke="#3B82F6"
               activeDot={{ r: 8 }}
-              name="Revenue"
+              name="Revenus"
             />
           </LineChart>
         </ResponsiveContainer>
