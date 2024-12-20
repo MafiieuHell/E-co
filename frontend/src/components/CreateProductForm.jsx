@@ -4,10 +4,10 @@ import { PlusCircle, Upload, Loader } from "lucide-react";
 import { useProductStore } from "../stores/useProductStore";
 
 const categories = [
-  "jeans",
+  "gamelles",
   "t-shirts",
-  "shoes",
-  "glasses",
+  "litieres",
+  "transports",
   "jackets",
   "suits",
   "bags",
